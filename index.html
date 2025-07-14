@@ -110,14 +110,38 @@
   </section>
 
   <!-- Gallery -->
-  <section id="gallery" class="max-w-6xl mx-auto px-6 py-20 text-center">
-    <h2 class="text-3xl font-semibold mb-10" data-aos="fade-up">Gallery</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <img src="gallery/coffeeTable.webp" class="rounded-xl shadow w-full h-60 object-cover" alt="Project 1" data-aos="fade-up" />
-      <img src="gallery/coffeTable.webp" class="rounded-xl shadow w-full h-60 object-cover" alt="Project 2" data-aos="fade-up" data-aos-delay="100" />
-      <img src="gallery/wineRackMedium.webp" class="rounded-xl shadow w-full h-60 object-cover" alt="Project 3" data-aos="fade-up" data-aos-delay="200" />
-    </div>
-  </section>
+  <section id="gallery" class="max-w-6xl mx-auto px-6 py-20 text-center" x-data="{ showAll: false }">
+  <h2 class="text-3xl font-semibold mb-10" data-aos="fade-up">Gallery</h2>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Always Visible -->
+    <img src="gallery/coffeeTable.webp" class="rounded-xl shadow w-full h-60 object-cover" alt="Project 1" data-aos="fade-up" />
+    <img src="gallery/wineRackMedium.webp" class="rounded-xl shadow w-full h-60 object-cover" alt="Project 2" data-aos="fade-up" data-aos-delay="100" />
+    <img src="gallery/wineRackLarge.webp" class="rounded-xl shadow w-full h-60 object-cover" alt="Project 3" data-aos="fade-up" data-aos-delay="200" />
+
+    <!-- Hidden by default -->
+    <template x-if="showAll">
+      <div class="contents">
+        <img src="gallery/pic1.jpeg" class="rounded-xl shadow w-full h-60 object-cover" alt="Project 4" data-aos="fade-up" />
+        <img src="gallery/pic4.jpeg" class="rounded-xl shadow w-full h-60 object-cover" alt="Project 5" data-aos="fade-up" />
+        <img src="gallery/pic3.jpeg" class="rounded-xl shadow w-full h-60 object-cover" alt="Project 6" data-aos="fade-up" />
+        <img src="gallery/pic2.jpeg" class="rounded-xl shadow w-full h-60 object-cover" alt="Project 7" data-aos="fade-up" />
+        <img src="gallery/pic5.jpeg" class="rounded-xl shadow w-full h-60 object-cover" alt="Project 8" data-aos="fade-up" />
+        <img src="gallery/pic6.jpeg" class="rounded-xl shadow w-full h-60 object-cover" alt="Project 9" data-aos="fade-up" />
+      </div>
+    </template>
+  </div>
+
+  <!-- Show More Button -->
+  <button 
+    class="mt-8 inline-block bg-gray-900 text-white font-medium px-6 py-2 rounded-full hover:bg-gray-800 transition"
+    x-show="!showAll"
+    @click="showAll = true"
+  >
+    Show More
+  </button>
+</section>
+
 
   <!-- Contact -->
   <section id="contact" class="bg-gray-100 py-20 px-6">
