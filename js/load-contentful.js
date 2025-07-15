@@ -18,7 +18,7 @@ client.getEntries({ content_type: 'service' })
         <div class="bg-white shadow-md rounded-2xl p-6" data-aos="zoom-in" data-aos-delay="100">
           <img src="https:${imageUrl}" alt="${title}" class="rounded-xl mb-4 w-full object-contain max-h-70">
           <h3 class="text-xl font-semibold mb-1">${title}</h3>
-          <p class="text-gray-500 text-sm font-medium mb-2">From R${price} each</p>
+          <p class="text-gray-800 font-bold text-lg mb-2">From R${price} each</p>
         </div>
       `;
 
