@@ -22,7 +22,7 @@ client.getEntries({ content_type: 'service' })
       serviceCard.innerHTML = `
         <img src="https:${imageUrl}" alt="${title}" class="rounded-xl mb-4 w-full object-contain max-h-70">
         <h3 class="text-xl font-semibold mb-2">${title}</h3>
-        <p class="text-gray-800 font-bold text-lg mb-2">${price}</p>
+        <p class="text-gray-800 font-bold text-lg mb-2">From R${price} each</p>
       `;
 
       // Append it to the grid
@@ -32,7 +32,7 @@ client.getEntries({ content_type: 'service' })
   .catch(console.error);
 
 
-  const galleryContainer = document.getElementById("gallery");
+  const galleryContainer = document.getElementById("contents");
 
 client.getEntries({ content_type: 'gallery' })
   .then((response) => {
