@@ -32,19 +32,25 @@ client.getEntries({ content_type: 'service' })
   .catch(console.error);
 
 
-  const galleryContainer = document.getElementById("contents");
+const galleryContainer = document.getElementById("contentful-gallery");
 
 client.getEntries({ content_type: 'gallery' })
   .then((response) => {
-    response.items.forEach((item) => {
+    response.items.forEach((item, index) => {
       const { image } = item.fields;
       const imageUrl = image.fields.file.url;
 
-      const html = `
-        <img src="${imageUrl}" class="rounded-xl shadow w-full  object-contain max-h-80" data-aos="fade-up" />
-      `;
+      const img = document.createElement("img");
+      img.src = `https:${imageUrl}`;
+      img.alt = "Gallery item";
+      img.className = "rounded-xl shadow w-full object-contain max-h-80";
+      img.setAttribute("data-aos", "fade-up");
 
-      galleryContainer.innerHTML += html;
+      galleryContainer.appendChild(img);
     });
+
+    // Optional: reinitialize AOS for new elements
+    if (AOS) AOS.refresh();
   })
   .catch(console.error);
+
