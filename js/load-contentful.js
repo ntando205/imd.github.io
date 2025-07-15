@@ -15,14 +15,31 @@ client.getEntries({ content_type: 'service' })
       const imageUrl = image.fields.file.url;
 
       const html = `
-        <div class="bg-white shadow-md rounded-2xl p-6" data-aos="zoom-in">
-          <img src="https:${imageUrl}" alt="${title}" class="rounded-xl mb-4 w-full max-h-80 object-contain">
+        <div class="bg-white shadow-md rounded-2xl p-6" data-aos="zoom-in" data-aos-delay="100">
+          <img src="https:${imageUrl}" alt="${title}" class="rounded-xl mb-4 w-full object-contain max-h-70">
           <h3 class="text-xl font-semibold mb-1">${title}</h3>
           <p class="text-gray-500 text-sm font-medium mb-2">From R${price} each</p>
         </div>
       `;
 
       serviceContainer.innerHTML += html;
+    });
+  })
+  .catch(console.error);
+
+  const galleryContainer = document.getElementById("gallery");
+
+client.getEntries({ content_type: 'gallery' })
+  .then((response) => {
+    response.items.forEach((item) => {
+      const { image } = item.fields;
+      const imageUrl = image.fields.file.url;
+
+      const html = `
+        <img src="${imageUrl}" class="rounded-xl shadow w-full  object-contain max-h-80" data-aos="fade-up" />
+      `;
+
+      galleryContainer.innerHTML += html;
     });
   })
   .catch(console.error);
